@@ -7,7 +7,6 @@ import cgi, cgitb
 # Create instance of FieldStorage
 form = cgi.FieldStorage()
 
-global a = 0
 # Get data from fields
 if form.getvalue('maths'):
    math_flag = "ON"
