@@ -8,11 +8,10 @@ import cgi, cgitb
 form = cgi.FieldStorage()
 
 # Get data from fields
-def rad():
-    if form.getvalue('subject'):
-        subject = form.getvalue('subject')
-    else:
-        subject = "Not set"
+if form.getvalue('subject'):
+    subject = form.getvalue('subject')
+else:
+    subject = "Not set"
 
 print("Content-type:text/html\n")
 print('''<!DOCTYPE HTML>
@@ -23,7 +22,7 @@ print('''<!DOCTYPE HTML>
         <body>
         ''')
 print("<h2> Selected Subject is %s</h2>" % subject)
-print('''<form action="/cgi-bin/radio.py/rad" method="post" target="_blank">
+print('''<form action="/cgi-bin/radio.py" method="post" target="_blank">
         <input type="radio" name="subject" value="maths" /> Maths
         <input type="radio" name="subject" value="physics" /> Physics
         <input type="submit" value="Select Subject" />

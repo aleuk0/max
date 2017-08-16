@@ -12,8 +12,6 @@ form = cgi.FieldStorage()
 first_name = form.getvalue('first_name')
 last_name  = form.getvalue('last_name')
 
-a = 0
-
 if form.getvalue('maths'):
    math_flag = "ON"
 else:
@@ -25,7 +23,6 @@ else:
 
 if form.getvalue('subject'):
     subject = form.getvalue('subject')
-    a += 1
 else:
     subject = "Not set"
 
@@ -63,8 +60,6 @@ print ("<h2> CheckBox Maths is : {}</h2>".format(math_flag))
 print ("<h2> CheckBox Physics is : {}</h2>".format(physics_flag))
 
 print("<h2> Selected Subject is {}</h2>".format(subject))
-
-print("<h2> Variable is : {} </h2>".format(a))
 
 print("""</body>
         </html>""")
