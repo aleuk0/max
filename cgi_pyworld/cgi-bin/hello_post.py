@@ -26,6 +26,7 @@ if form.getvalue('subject'):
 else:
     subject = "Not set"
 
+
 print("Content-type:text/html\n")
 print('''<!DOCTYPE HTML>
         <html>
