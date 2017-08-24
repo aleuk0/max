@@ -61,5 +61,24 @@ def close_db(error):
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
+'''
+1. тут будет функция
+@app.route('/')
+def show_entries():
+    db = get_db()
+    cur = db.execute('select title, text from entries order by id desc')
+    entries = cur.fetchall()
+    return render_template('show_entries.html', entries=entries)
+
+2. только в select надо будет брать a или b, записывать новые значения через
+insert, как в /add с методом post
+3. сделать шаблон, похожий на poisk_tk.py
+4. https://habrahabr.ru/post/321510/ &
+https://ruseller.com/lessons.php?rub=28&id=2277
+
+
+'''
+
+
 if __name__ == '__main__':
     app.run()
