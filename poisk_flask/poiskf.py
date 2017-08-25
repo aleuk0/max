@@ -14,6 +14,7 @@ PASSWORD = 'default'
 # создаём наше маленькое приложение :)
 app = Flask(__name__)
 app.config.from_object(__name__)
+
 # Загружаем конфиг по умолчанию и переопределяем в конфигурации часть
 # значений через переменную окружения
 app.config.update(dict(
@@ -61,23 +62,63 @@ def close_db(error):
     if hasattr(g, 'sqlite_db'):
         g.sqlite_db.close()
 
-'''
-1. тут будет функция
-@app.route('/')
-def show_entries():
-    db = get_db()
-    cur = db.execute('select title, text from entries order by id desc')
-    entries = cur.fetchall()
-    return render_template('show_entries.html', entries=entries)
 
-2. только в select надо будет брать a или b, записывать новые значения через
+'''
+TODO
+1. функция для вопроса и отображения числа, а также его подсчета
+2. в select надо будет брать a или b, записывать новые значения через
 insert, как в /add с методом post
 3. сделать шаблон, похожий на poisk_tk.py
 4. https://habrahabr.ru/post/321510/ &
 https://ruseller.com/lessons.php?rub=28&id=2277
-
-
 '''
+
+@app.route('/')
+def show_entries():
+    db = get_db()
+    cur = db.execute('select a, b from entries order by id desc limit 1')
+    entries = cur.fetchall()
+    flash('Number < 500000?' + str(entries))
+    return render_template('show_entries.html', entries=entries)
+'''
+You cannot use an aggregate function like MAX() like this in the selection.
+Instead consider the following:
+    ORDER BY unixtime DESC to sort the results matching your selection with the
+    newest first.
+    LIMIT 1 to only return the first result i.e. the newest.
+'''
+
+@app.route('/add', methods=['POST'])
+def add_entry():
+    if not session.get('logged_in'):
+        abort(401)
+    db = get_db()
+    db.execute('insert into entries (a, b) values (?, ?)',
+            [request.form['a'], request.form['b']])
+    db.commit()
+    flash('New entry was successfully posted')
+    return redirect(url_for('show_entries'))
+
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    error = None
+    if request.method == 'POST':
+        if request.form['username'] != app.config['USERNAME']:
+            error = 'Invalid username'
+        elif request.form['password'] != app.config['PASSWORD']:
+            error = 'Invalid password'
+        else:
+            session['logged_in'] = True
+            flash('You were logged in')
+            return redirect(url_for('show_entries'))
+    return render_template('login.html', error=error)
+
+@app.route('/logout')
+def logout():
+    session.pop('logged_in', None)
+    flash('You were logged out')
+    return redirect(url_for('show_entries'))
 
 
 if __name__ == '__main__':
