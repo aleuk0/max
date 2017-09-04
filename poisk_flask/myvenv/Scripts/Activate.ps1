@@ -27,7 +27,7 @@ function global:deactivate ([switch]$NonDestructive) {
 
 deactivate -nondestructive
 
-$env:VIRTUAL_ENV="C:\Users\public\temp\max\poisk_flask\myvenv"
+$env:VIRTUAL_ENV="C:\Users\Al\max\poisk_flask\myvenv"
 
 if (! $env:VIRTUAL_ENV_DISABLE_PROMPT) {
     # Set the prompt to include the env name

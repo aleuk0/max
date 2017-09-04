@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block content %}
+      <h1>{{text}}{{number}}<h1>
+      <form action=yes method=post>
+        <dd><input type=submit value=Yes>
+      </form>
+      <form action=no method=post>
+        <dd><input type=submit value=No>
+      </form>
+{% endblock %}

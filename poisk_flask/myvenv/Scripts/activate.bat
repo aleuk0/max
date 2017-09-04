@@ -1,5 +1,5 @@
 @echo off
-set "VIRTUAL_ENV=C:\Users\public\temp\max\poisk_flask\myvenv"
+set "VIRTUAL_ENV=C:\Users\Al\max\poisk_flask\myvenv"
 
 if not defined PROMPT (
     set "PROMPT=$P$G"

@@ -1,0 +1,14 @@
+<html>
+  <head>
+    {% if title %}
+    <title>You said '{{ title }}'</title>
+    {% else %}
+    <title>Guess numbers from 1 to 1000000.</title>
+    {% endif %}
+  </head>
+  <body>
+    <div>New search: <a href="/index">Press here</a></div>
+    <hr>
+    {% block content %}{% endblock %}
+  </body>
+</html>
