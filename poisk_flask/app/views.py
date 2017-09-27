@@ -9,11 +9,10 @@ def index():
     global a, b
     a, b = 1000000, 1
     return render_template('index.html',
-                           title='New search',
-                           text = '''Let\'s start!
+                           title='New game',
+                           text = '''Let\'s play!
                            Your number must be from 1 to 1000000! ''',
-                           number = 'Just try to push YES or NO')
-
+                           number = 'Your number < 500000?')
 
 @app.route('/yes', methods=['POST'])
 def yes():
@@ -28,8 +27,6 @@ def yes():
                            title='Yes',
                            text = 'Your number < ',
                            number = round(a,2))
-
-
 
 @app.route('/no', methods=['POST'])
 def no():
