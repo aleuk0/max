@@ -1,7 +1,12 @@
 def a():
     print("OK!")
 
-inp = input("just print something \n" )
-com = inp.split(" ")
-if inp == 'a':
-    a()
+while(True):
+    inp = input("just print something \n" )
+    message = inp.split(" ")
+    if message[0] == 'a':
+        a()
+
+    elif message[0] == 'exit':
+        break
+    
