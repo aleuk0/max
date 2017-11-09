@@ -1,16 +1,23 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 import pymysql
 
+# Open database connection
 conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='toshi',
-                     conn='phonebook')
+                     db='testdb')
 cur = conn.cursor()
+
+def dropt():
+	# Drop table if it already exist using execute() method.
+	cur.execute("DROP TABLE IF EXISTS EMPLOYEE")
 
 """В консоли программа принимает следующие команды:
 Добавить +79058023741 Бородин А.М.
 Добавить 02 Полиция
 Добавить 04 Служба газа
 Эта команда добавляет в справочник соответствующее телефону ФИО. Телефон не содержит пробелов."""
-def add(int, str):
+def add():
     ...
 
 """Найти 02
@@ -30,6 +37,20 @@ def delete():
 Эта команда сообщает системе что нужно прекратить принимать команды и завершить выполнение приложения."""
 def exit():
     ...
+
+while(True):
+    inp = input("just print something \n" )
+    message = inp.split(" ")
+    if message[0] == 'добавить':
+        add()
+	#pep-0263
+
+    elif message[0] == 'выход':
+        break
+    
+
+
+
 
 """При реализации этой программы необходимо создать
 1. Интерфейс или абстрактный класс команды ICommand. Класс команды содержит один метод: выполнить команду,

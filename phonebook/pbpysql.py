@@ -6,7 +6,7 @@ import pymysql
 
 # Open database connection
 conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='toshi',
-                     conn='TESTDB')
+                     db='TESTDB')
 cur = conn.cursor()
 
 # Drop table if it already exist using execute() method.
