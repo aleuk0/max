@@ -13,15 +13,21 @@ cur.execute("DROP TABLE IF EXISTS PB")
 
 """Creating Database Table"""
 sql = """CREATE TABLE PB (
-         FIRST_NAME  CHAR(20) NOT NULL,
-         LAST_NAME  CHAR(20),
-         AGE INT,
-         SEX CHAR(1),
-         INCOME FLOAT )"""
+         NUMBER CHAR(20) NOT NULL,
+		 NAME  CHAR(20) NOT NULL
+         )"""
 cur.execute(sql)
 
 def add():
-    print("OK!")
+	print("try")
+	"""INSERT Operation"""
+	sql = """INSERT INTO EMPLOYEE(NUMBER, NAME)
+         VALUES ('+79221234567', 'Иван Петров')"""
+	try:
+		cur.execute(sql)
+		print("OK!")
+	except:
+		conn.rollback()
 	
 def exit():
 	...

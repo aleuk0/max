@@ -1,5 +1,6 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
+# -*- coding: utf-8 -*- 
+#pep-0263
 
 import pymysql
 
@@ -8,9 +9,16 @@ conn = pymysql.connect(host='localhost', port=3306, user='root', passwd='toshi',
                      db='testdb')
 cur = conn.cursor()
 
-def dropt():
+def newpb():
 	# Drop table if it already exist using execute() method.
-	cur.execute("DROP TABLE IF EXISTS EMPLOYEE")
+	cur.execute("DROP TABLE IF EXISTS PB")
+
+	"""Creating Database Table"""
+	sql = """CREATE TABLE PB (
+			 NUMBER CHAR(20) NOT NULL,
+			 NAME  CHAR(20) NOT NULL
+			 )"""
+	cur.execute(sql)
 
 """В консоли программа принимает следующие команды:
 Добавить +79058023741 Бородин А.М.
@@ -43,8 +51,7 @@ while(True):
     message = inp.split(" ")
     if message[0] == 'добавить':
         add()
-	#pep-0263
-
+	
     elif message[0] == 'выход':
         break
     
