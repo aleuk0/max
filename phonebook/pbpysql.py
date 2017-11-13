@@ -28,6 +28,7 @@ sql = """INSERT INTO EMPLOYEE(FIRST_NAME,
          VALUES ('Mac', 'Mohan', 20, 'M', 2000)"""
 try:
 	cur.execute(sql)
+	conn.commit()
 except:
 	conn.rollback()
 
