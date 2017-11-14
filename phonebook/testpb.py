@@ -1,6 +1,5 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
-
 import pymysql
 
 # Open database connection
@@ -14,50 +13,47 @@ conn = pymysql.connect(host='localhost',
 cur = conn.cursor()
 
 def clean():
-	cur.execute("DROP TABLE IF EXISTS PB")
+    cur.execute("DROP TABLE IF EXISTS PB")
 
 def create():
-	sql = """CREATE TABLE PB (
-			NUMBER CHAR(20) NOT NULL,
-			NAME  CHAR(20) NOT NULL
-			)"""
-	cur.execute(sql)
+    sql = """CREATE TABLE PB (
+            NUMBER CHAR(20) NOT NULL,
+            NAME  CHAR(20) NOT NULL
+            )"""
+    cur.execute(sql)
 
 
 def add():
-	print("try...")
-	sql = "INSERT INTO PB (NUMBER, NAME) \
-            VALUES ('%s', '%s')" % \
-			(number_for_adding, name_for_adding)
-	try:
-		cur.execute(sql)
-		conn.commit()
-		print("successfully commited")
-	except:
-		conn.rollback()
+    print("try...")
+    sql = "INSERT INTO PB (NUMBER, NAME) VALUES ('%s', '%s')" % \
+    (message[1], " ".join(message[2:]))
+    try:
+        cur.execute(sql)
+        conn.commit()
+        print("successfully commited")
+    except:
+        conn.rollback()
 
 def search():
-	sql = "SELECT * FROM PB"
-	try:
-		cur.execute(sql)
-		results = cur.fetchall()
-		for row in results:
-			number = row[0]
-			name = row[1]
-			print ("number=%s,name=%s" % \
-				(number, name))
-	except:
-		print("error: unable to fecth data")
+    sql = "SELECT * FROM PB"
+    try:
+        cur.execute(sql)
+        results = cur.fetchall()
+        for row in results:
+            number = row[0]
+            name = row[1]
+            print ("number=%s,name=%s" % \
+                (number, name))
+    except:
+        print("error: unable to fecth data")
 
 
 while(True):
     inp = input("just print something \n" )
     message = inp.split(" ")
     if message[0] == 'добавить':
-		number_for_adding == message[1]
-		name_for_adding == " ".join(message[2:])
-		add()
-		
+        add()
+
     elif message[0] == 'найти':
         search()
 
