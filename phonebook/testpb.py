@@ -6,7 +6,7 @@ import pymysql
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='toshi',
+                       passwd='3720011',
                        db='testdb',
                        charset = "utf8",
                        use_unicode = True)
@@ -47,6 +47,14 @@ def search():
     except:
         print("error: unable to fecth data")
 
+def delete():
+    sql = "DELETE FROM PB WHERE NAME = '%s'" % ('Вася Пупкин')
+    try:
+        cur.execute(sql)
+        conn.commit()
+    except:
+        conn.rollback()
+
 
 while(True):
     inp = input("just print something \n" )
@@ -56,6 +64,9 @@ while(True):
 
     elif message[0] == 'найти':
         search()
+
+    elif message[0] == 'удалить':
+        delete()
 
     elif message[0] == 'выход':
         break
