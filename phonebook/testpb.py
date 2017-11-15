@@ -6,7 +6,7 @@ import pymysql
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='3720011',
+                       passwd='toshi',
                        db='testdb',
                        charset = "utf8",
                        use_unicode = True)
@@ -34,7 +34,7 @@ def add():
     except:
         conn.rollback()
 
-def search():
+def search_all():
     sql = "SELECT * FROM PB"
     try:
         cur.execute(sql)
@@ -46,9 +46,27 @@ def search():
                 (number, name))
     except:
         print("error: unable to fecth data")
+    
+"""Найти 02
+Найти Служба газа
+Найти газ
+Эта команда выводит всех абонентов, номер телефона или имя которых содержит приведённый текст."""
+def search():
+    sql = "SELECT * FROM PB WHERE NAME LIKE '%s'" % ('%'+" ".join(message[1:])+'%')
+    try:
+        cur.execute(sql)
+        results = cur.fetchall()
+        for row in results:
+            number = row[0]
+            name = row[1]
+            print ("number=%s,name=%s" % \
+                (number, name))
+    except:
+        print("error: unable to fecth data")
+#TODO: чтобы искал и по именам, и по номерам
 
 def delete():
-    sql = "DELETE FROM PB WHERE NAME = '%s'" % ('Вася Пупкин')
+    sql = "DELETE FROM PB WHERE NAME = '%s'" % (" ".join(message[1:]))
     try:
         cur.execute(sql)
         conn.commit()
@@ -62,6 +80,9 @@ while(True):
     if message[0] == 'добавить':
         add()
 
+    elif message[0] == 'найтивсех':
+        search_all()
+        
     elif message[0] == 'найти':
         search()
 
