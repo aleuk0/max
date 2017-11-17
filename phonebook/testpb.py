@@ -6,11 +6,12 @@ import pymysql
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='toshi',
+                       passwd='3720011',
                        db='testdb',
-                       charset = "utf8",
-                       use_unicode = True)
+                       charset="utf8",
+                       use_unicode=True)
 cur = conn.cursor()
+
 
 def create_new_phonebook():
     cur.execute("DROP TABLE IF EXISTS PB")
@@ -24,31 +25,33 @@ def create_new_phonebook():
 def add():
     print("try...")
     sql = "INSERT INTO PB (NUMBER, NAME) VALUES ('%s', '%s')" % \
-    (message[1], " ".join(message[2:]))
+          (message[1], " ".join(message[2:]))
     try:
         cur.execute(sql)
         conn.commit()
         print("successfully commited")
     except:
         conn.rollback()
-    
+
+
 def search():
-    sql = "SELECT * FROM PB WHERE NAME LIKE '%s' OR NUMBER LIKE '%s'"  % \
-            ('%'+" ".join(message[1:])+'%', '%'+" ".join(message[1:])+'%')
+    sql = "SELECT * FROM PB WHERE NAME LIKE '%s' OR NUMBER LIKE '%s'" % \
+          ('%' + " ".join(message[1:]) + '%', '%' + " ".join(message[1:]) + '%')
     try:
         cur.execute(sql)
         results = cur.fetchall()
         for row in results:
             number = row[0]
             name = row[1]
-            print ("number=%s,name=%s" % \
-                (number, name))
+            print("number=%s,name=%s" % \
+                  (number, name))
     except:
         print("error: unable to fecth data")
 
+
 def delete():
     sql = "DELETE FROM PB WHERE NAME = '%s' OR NUMBER = '%s'" % \
-            (" ".join(message[1:]), " ".join(message[1:]))
+          (" ".join(message[1:]), " ".join(message[1:]))
     try:
         cur.execute(sql)
         conn.commit()
@@ -56,14 +59,14 @@ def delete():
         conn.rollback()
 
 
-while(True):
+while True:
     inp = input("""Телефонный справочник.
 Поддерживает команды: найти, добавить, удалить, выход. 
 Введите команду: \n
-""" )
+""")
     message = inp.split(" ")
     if message[0] == 'добавить':
-        add()        
+        add()
     elif message[0] == 'найти':
         search()
     elif message[0] == 'удалить':
