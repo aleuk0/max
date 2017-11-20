@@ -2,6 +2,8 @@
 # -*- coding: utf-8 -*-
 import pymysql
 
+# TODO: написать 4 теста, проверяющих реализации команд.
+
 # Open database connection
 conn = pymysql.connect(host='localhost',
                        port=3306,
