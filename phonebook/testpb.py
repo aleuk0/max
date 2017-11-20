@@ -1,6 +1,7 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pymysql
+import unittest
 
 # TODO: написать 4 теста, проверяющих реализации команд.
 
