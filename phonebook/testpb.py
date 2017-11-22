@@ -9,7 +9,7 @@ import unittest
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='3720011',
+                       passwd='toshi',
                        db='testdb',
                        charset="utf8",
                        use_unicode=True)
@@ -61,16 +61,16 @@ def delete():
     except:
         conn.rollback()
 
-
-while True:
-    inp = input("""Телефонный справочник.
-Поддерживает команды: найти, добавить, удалить, выход. 
-Введите команду: \n
-""")
-    message = inp.split(" ")
-    if message[0] == 'добавить':
-        add()
-    elif message[0] == 'найти':
+if __name__ == "__main__":
+    while True:
+        inp = input("""Телефонный справочник.
+    Поддерживает команды: найти, добавить, удалить, выход. 
+    Введите команду: \n
+    """)
+        message = inp.split(" ")
+        if message[0] == 'добавить':
+            add()
+        elif message[0] == 'найти':
         search()
     elif message[0] == 'удалить':
         delete()
