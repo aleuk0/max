@@ -1,5 +1,5 @@
 ﻿import unittest
-from testpb import add
+import testpb
 
 
 class TestStringMethods(unittest.TestCase):
