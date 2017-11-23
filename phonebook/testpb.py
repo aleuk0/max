@@ -1,7 +1,6 @@
 ﻿#!/usr/bin/env python
 # -*- coding: utf-8 -*-
 import pymysql
-import unittest
 
 # TODO: написать 4 теста, проверяющих реализации команд.
 
@@ -9,7 +8,7 @@ import unittest
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='toshi',
+                       passwd='3720011',
                        db='testdb',
                        charset="utf8",
                        use_unicode=True)

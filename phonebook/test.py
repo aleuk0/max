@@ -17,6 +17,10 @@ class TestStringMethods(unittest.TestCase):
         with self.assertRaises(TypeError):
             s.split(2)
 
+    def test_add(self):
+        testpb.message = ["добавить", "12345", "qwerty", "asd123"]
+        testpb.add()
+
 
 if __name__ == '__main__':
     unittest.main()
