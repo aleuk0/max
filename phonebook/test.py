@@ -19,8 +19,17 @@ class TestStringMethods(unittest.TestCase):
 
     def test_add(self):
         testpb.message = ["добавить", "12345", "qwerty", "asd123"]
-        testpb.add()
+        testpb.add(testpb.message)
 
+    def test_search(self):
+        testpb.message = ["найти", "12345"]
+
+    def test_delete(self):
+        testpb.message = ["удалить", "12345"]		
+
+    def test_close(self):
+        testpb.close_db()
+		
 
 if __name__ == '__main__':
     unittest.main()

@@ -2,13 +2,13 @@
 # -*- coding: utf-8 -*-
 import pymysql
 
-# TODO: написать 4 теста, проверяющих реализации команд.
+message = []
 
 # Open database connection
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='3720011',
+                       passwd='toshi',
                        db='testdb',
                        charset="utf8",
                        use_unicode=True)
@@ -24,19 +24,19 @@ def create_new_phonebook():
     cur.execute(sql)
 
 
-def add():
-    print("try...")
+def add(message):
+    #print("try...")
     sql = "INSERT INTO PB (NUMBER, NAME) VALUES ('%s', '%s')" % \
           (message[1], " ".join(message[2:]))
     try:
         cur.execute(sql)
         conn.commit()
-        print("successfully commited")
+        #print("successfully commited")
     except:
         conn.rollback()
 
 
-def search():
+def search(message):
     sql = "SELECT * FROM PB WHERE NAME LIKE '%s' OR NUMBER LIKE '%s'" % \
           ('%' + " ".join(message[1:]) + '%', '%' + " ".join(message[1:]) + '%')
     try:
@@ -51,7 +51,7 @@ def search():
         print("error: unable to fecth data")
 
 
-def delete():
+def delete(message):
     sql = "DELETE FROM PB WHERE NAME = '%s' OR NUMBER = '%s'" % \
           (" ".join(message[1:]), " ".join(message[1:]))
     try:
@@ -60,6 +60,10 @@ def delete():
     except:
         conn.rollback()
 
+def close_db():
+    cur.close()
+    conn.close()
+    #input('successfully closed')
 
 if __name__ == "__main__":
     while True:
@@ -69,15 +73,13 @@ if __name__ == "__main__":
     """)
         message = inp.split(" ")
         if message[0] == 'добавить':
-            add()
+            add(message)
         elif message[0] == 'найти':
-            search()
+            search(message)
         elif message[0] == 'удалить':
-            delete()
+            delete(message)
         elif message[0] == 'выход':
             break
         print("\n")
-
-cur.close()
-conn.close()
-#input('successfully closed')
+        
+    close_db()
