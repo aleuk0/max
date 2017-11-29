@@ -23,13 +23,15 @@ class TestStringMethods(unittest.TestCase):
 
     def test_search(self):
         testpb.message = ["найти", "12345"]
+        testpb.search(testpb.message)
 
-    def test_delete(self):
-        testpb.message = ["удалить", "12345"]		
+    # def test_delete(self):
+    #    testpb.message = ["удалить", "12345"]
+    #    testpb.delete(testpb.message)
 
     def test_close(self):
         testpb.close_db()
-		
+
 
 if __name__ == '__main__':
     unittest.main()

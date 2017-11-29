@@ -8,7 +8,7 @@ message = []
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='toshi',
+                       passwd='3720011',
                        db='testdb',
                        charset="utf8",
                        use_unicode=True)
@@ -25,13 +25,13 @@ def create_new_phonebook():
 
 
 def add(message):
-    #print("try...")
+    # print("try...")
     sql = "INSERT INTO PB (NUMBER, NAME) VALUES ('%s', '%s')" % \
           (message[1], " ".join(message[2:]))
     try:
         cur.execute(sql)
         conn.commit()
-        #print("successfully commited")
+        # print("successfully committed")
     except:
         conn.rollback()
 
@@ -60,10 +60,12 @@ def delete(message):
     except:
         conn.rollback()
 
+
 def close_db():
     cur.close()
     conn.close()
-    #input('successfully closed')
+    # input('successfully closed')
+
 
 if __name__ == "__main__":
     while True:
@@ -81,5 +83,4 @@ if __name__ == "__main__":
         elif message[0] == 'выход':
             break
         print("\n")
-        
     close_db()
