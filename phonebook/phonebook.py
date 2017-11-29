@@ -2,6 +2,9 @@
 # -*- coding: utf-8 -*-
 import pymysql
 
+message = []
+
+password = input("введите пароль mysql:")
 
 """При реализации этой программы необходимо создать
 1. Интерфейс или абстрактный класс команды ICommand. Класс команды содержит один метод: выполнить команду,
@@ -21,7 +24,7 @@ import pymysql
 conn = pymysql.connect(host='localhost',
                        port=3306,
                        user='root',
-                       passwd='toshi',
+                       passwd=password,
                        db='testdb',
                        charset="utf8",
                        use_unicode=True)
@@ -43,7 +46,7 @@ def create_new_phonebook():
     cur.execute(sql)
 
 
-def add():
+def add(message):
     print("try...")
     sql = "INSERT INTO PB (NUMBER, NAME) VALUES ('%s', '%s')" % \
           (message[1], " ".join(message[2:]))
@@ -61,7 +64,7 @@ def add():
 Эта команда выводит всех абонентов, номер телефона или имя которых содержит приведённый текст."""
 
 
-def search():
+def search(message):
     sql = "SELECT * FROM PB WHERE NAME LIKE '%s' OR NUMBER LIKE '%s'" % \
           ('%' + " ".join(message[1:]) + '%', '%' + " ".join(message[1:]) + '%')
     try:
@@ -81,7 +84,7 @@ def search():
 Эта команда удаляет запись, телефон или название которой строго соответствует аргументу."""
 
 
-def delete():
+def delete(message):
     sql = "DELETE FROM PB WHERE NAME = '%s' OR NUMBER = '%s'" % \
           (" ".join(message[1:]), " ".join(message[1:]))
     try:
@@ -95,26 +98,26 @@ def delete():
 Эта команда сообщает системе что нужно прекратить принимать команды и завершить выполнение приложения."""
 
 
-def exit():
-    ...
+def close_db():
+    cur.close()
+    conn.close()
+    # input('successfully closed')
 
 
-while True:
-    inp = input("""Телефонный справочник.
-Поддерживает команды: найти, добавить, удалить, выход. 
-Введите команду: \n
-""")
-    message = inp.split(" ")
-    if message[0] == 'добавить':
-        add()
-    elif message[0] == 'найти':
-        search()
-    elif message[0] == 'удалить':
-        delete()
-    elif message[0] == 'выход':
-        break
-    print("\n")
-
-cur.close()
-conn.close()
-input('successfully closed')
+if __name__ == "__main__":
+    while True:
+        inp = input("""Телефонный справочник.
+    Поддерживает команды: найти, добавить, удалить, выход. 
+    Введите команду: \n
+    """)
+        message = inp.split(" ")
+        if message[0] == 'добавить':
+            add(message)
+        elif message[0] == 'найти':
+            search(message)
+        elif message[0] == 'удалить':
+            delete(message)
+        elif message[0] == 'выход':
+            break
+        print("\n")
+    close_db()
