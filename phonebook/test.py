@@ -21,9 +21,9 @@ class TestStringMethods(unittest.TestCase):
         testpb.message = ["добавить", "12345", "qwerty", "asd123"]
         testpb.add(testpb.message)
 
-    def test_search(self):
-        testpb.message = ["найти", "12345"]
-        testpb.search(testpb.message)
+    #def test_search(self):
+    #    testpb.message = ["найти", "12345"]
+    #    testpb.search(testpb.message)
 
     # def test_delete(self):
     #    testpb.message = ["удалить", "12345"]
