@@ -16,6 +16,7 @@ conn = pymysql.connect(host='localhost',
                        use_unicode=True)
 cur = conn.cursor()
 
+print("Телефонный справочник. Поддерживает команды: найти, добавить, удалить, выход.")
 
 def create_new_phonebook():
     cur.execute("DROP TABLE IF EXISTS PB")
@@ -71,10 +72,7 @@ def close_db():
 
 if __name__ == "__main__":
     while True:
-        inp = input("""Телефонный справочник.
-    Поддерживает команды: найти, добавить, удалить, выход. 
-    Введите команду: \n
-    """)
+        inp = input("""Введите команду:\n""")
         message = inp.split(" ")
         if message[0] == 'добавить':
             add(message)
