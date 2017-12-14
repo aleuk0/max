@@ -17,9 +17,9 @@ class TestStringMethods(unittest.TestCase):
     #    with self.assertRaises(TypeError):
     #        s.split(2)
 
-    def test_add(self):
-        testpb.message = ["добавить", "12345", "qwerty", "asd123"]
-        testpb.add(testpb.message)
+    #def test_add(self):
+    #    testpb.message = ["добавить", "12345", "qwerty", "asd123"]
+    #    testpb.add(testpb.message)
 
     def test_search(self):
         testpb.message = ["найти", "12345"]
