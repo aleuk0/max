@@ -7,4 +7,6 @@ poisk_flask - вариант программы poisk.py, реализованный как MVC сайт (Flask)
 
 phonebook - телефонная книжка (pymysql + unittest)
 
+tic-tac-toe - игра крестики-нолики
+
 wsgi_codepoint, cgi_pyworld - для понимания cgi и wsgi
