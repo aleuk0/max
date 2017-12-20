@@ -1,9 +1,4 @@
-﻿# https://codereview.stackexchange.com/questions/108738/python-tic-tac-toe-game
-# http://inventwithpython.com/chapter10.html
-
-# with random()
-
-import random
+﻿#https://codereview.stackexchange.com/questions/108738/python-tic-tac-toe-game
 
 def tic_tac_toe():
     board = [None] + list(range(1, 10))
@@ -19,11 +14,9 @@ def tic_tac_toe():
     ]
 
     def draw():
-        print(' ' , board[7] , ' | ' , board[8] , ' | ' , board[9])
-        print('-----------------')
-        print(' ' , board[4] , ' | ' , board[5] , ' | ' , board[6])
-        print('-----------------')
-        print(' ' , board[1] , ' | ' , board[2] , ' | ' , board[3])
+        print(board[7], board[8], board[9])
+        print(board[4], board[5], board[6])
+        print(board[1], board[2], board[3])
         print()
     
     def choose_number():
@@ -38,12 +31,6 @@ def tic_tac_toe():
                     print("\nInvalid move. Try again")
             except ValueError:
                print("\nThat's not a number. Try again")
-               
-    def choose_number_comp():
-        while True:
-            a = random.randint(1, 9)
-            if a in board:
-                return a
 
     def is_game_over():
         for a, b, c in WIN_COMBINATIONS:
@@ -55,17 +42,12 @@ def tic_tac_toe():
             print("The game ends in a tie\n")
             return True
 
-    for player in 'XO' * 9:    # для выбора за кого играть Х или О - менять местами ХО и ОХ
+    for player in 'XO' * 9:
         draw()
-        q = 0
         if is_game_over():
             break
         print("Player {0} pick your move".format(player))
-        if q % 2 == 0:
-            board[choose_number()] = player
-        else: 
-            board[choose_number_comp()] = player     # играет комп
-        q += 1
+        board[choose_number()] = player
         print()
 
 while True:
