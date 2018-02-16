@@ -1,5 +1,5 @@
 ﻿import unittest
-import testpb
+import phonebook
 
 
 class TestStringMethods(unittest.TestCase):
@@ -18,19 +18,19 @@ class TestStringMethods(unittest.TestCase):
     #        s.split(2)
 
     #def test_add(self):
-    #    testpb.message = ["добавить", "12345", "qwerty", "asd123"]
-    #    testpb.add(testpb.message)
+    #    phonebook.message = ["добавить", "12345", "qwerty", "asd123"]
+    #    phonebook.add(phonebook.message)
 
     def test_search(self):
-        testpb.message = ["найти", "12345"]
-        testpb.search(testpb.message)
+        phonebook.message = ["найти", "12345"]
+        phonebook.search(phonebook.message)
 
     # def test_delete(self):
-    #    testpb.message = ["удалить", "12345"]
-    #    testpb.delete(testpb.message)
+    #    phonebook.message = ["удалить", "12345"]
+    #    phonebook.delete(phonebook.message)
 
     def test_close(self):
-        testpb.close_db()
+        phonebook.close_db()
 
 
 if __name__ == '__main__':
