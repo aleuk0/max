@@ -1,0 +1,26 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            // "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "org.test.App",
+            "args": ""
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - App",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "integratedTerminal",
+            // "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "org.test.simple-app",
+            "args": ""
+        }
+    ]
+}
