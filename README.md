@@ -10,3 +10,5 @@ phonebook - телефонная книжка (pymysql + unittest)
 tic-tac-toe - игра крестики-нолики
 
 wsgi_codepoint, cgi_pyworld - для понимания cgi и wsgi
+
+simple_java_search - то же, что и poisk.py, но на java
