@@ -1,0 +1,15 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - JavaSpringSearchApplication",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopOnEntry": false,
+            "mainClass": "com.spring_search.java_spring_search.JavaSpringSearchApplication",
+            "args": "",
+            "projectName": "java_spring_search"
+        }
+    ]
+}

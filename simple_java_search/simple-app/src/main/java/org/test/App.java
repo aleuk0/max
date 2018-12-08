@@ -26,22 +26,16 @@ public final class App {
                     System.out.println("Your number is " + App.round(a, 2));
                     break;
                 }
-            }
-
-            else if (x.equals("no")) {
+            } else if (x.equals("no")) {
                 b = (a + b) / 2;
                 n += 1;
                 if (Math.round(a) == (Math.round(b))) {
                     System.out.println("Your number is " + App.round(a, 2));
                     break;
                 }
-            }
-
-            else if (x.equals("exit")) {
+            } else if (x.equals("exit")) {
                 break;
-            }
-
-            else {
+            } else {
                 System.out.println("You have a mistake in keyboard input. To exit enter \'exit\'");
             }
         }
